@@ -10,20 +10,19 @@ conn1 = sqlite3.connect('planets.db')
 pd.read_sql("""SELECT * FROM planets; """, conn1)
 
 
-df_no_moons = pd.read_sql("""SELECT * FROM planets WHERE number_of_moons = 0; """, conn1)
+df_no_moons = pd.read_sql("""SELECT * FROM planets WHERE num_of_moons = 0; """, conn1)
 
-df_name_seven = pd.read_sql("""SELECT planet_name, planet_mass FROM planets WHERE LENGTH(planet_name) = 7; """, conn1)
+df_name_seven = pd.read_sql("""SELECT name, mass FROM planets WHERE LENGTH(name) = 7; """, conn1)
 
 ##### Part 2: Advanced Filtering #####
 
 
-df_mass = pd.read_sql("""SELECT planet_name, planet_mass FROM planets WHERE planet_mass <= 1.00, conn1); """, conn1)
+df_mass = pd.read_sql("""SELECT name, mass FROM planets WHERE mass <= 1.00;""", conn1)
 
 
-df_mass_moon = pd.read_sql("""SELECT * FROM planets WHERE planet_moons >= 1 AND planet_mass < 1.00; """, conn1)
+df_mass_moon = pd.read_sql("""SELECT * FROM planets WHERE num_of_moons >= 1 AND mass < 1.00; """, conn1)
 
-
-df_blue = pd.read_sql("""SELECT planet_name, planet_color FROM planets WHERE planet_color LIKE '%blue%'""", conn1)
+df_blue = pd.read_sql("""SELECT name, color FROM planets WHERE color LIKE '%blue%'""", conn1)
 
 
 
