@@ -37,7 +37,7 @@ pd.read_sql("SELECT * FROM dogs;", conn2)
 df_hungry = pd.read_sql("""SELECT name, age, breed FROM dogs WHERE hungry = 1 ORDER BY age ASC; """, conn2)
 
 
-df_hungry_ages = pd.read_sql("""SELECT name, age, hungry FROM dogs WHERE age BETWEEN 2 AND 7 ORDER BY name ASC; """, conn2)
+df_hungry_ages = pd.read_sql("""SELECT name, age, hungry FROM dogs WHERE age BETWEEN 2 AND 7 AND hungry = 1 ORDER BY name ASC; """, conn2)
 
 
 df_4_oldest = pd.read_sql("""SELECT name, age, breed FROM (SELECT name, age, breed FROM dogs ORDER BY age DESC LIMIT 4) ORDER BY breed ASC; """, conn2)
@@ -64,11 +64,11 @@ df_hr_total = pd.read_sql("""SELECT SUM(HR) AS total_home_runs FROM babe_ruth_st
 
 # STEP 11
 # Replace None with your code
-df_teams_years = pd.read_sql("""SELECT team, COUNT(DISTINCT year) AS number_years FROM babe_ruth_stats GROUP BY team;""", conn3).sum()
+df_teams_years = pd.read_sql("""SELECT team, COUNT(DISTINCT year) AS number_years FROM babe_ruth_stats GROUP BY team;""", conn3)
 
 # STEP 12
 # Replace None with your code
-df_at_bats = pd.read_sql("""SELECT team, AVG(at_bats) AS total_at_bats FROM babe_ruth_stats GROUP BY team HAVING AVG(at_bats) >200 """, conn3).sum()
+df_at_bats = pd.read_sql("""SELECT team, AVG(at_bats) AS average_at_bats FROM babe_ruth_stats GROUP BY team HAVING AVG(at_bats) > 200""", conn3).sum()
 
 
 conn1.close()
