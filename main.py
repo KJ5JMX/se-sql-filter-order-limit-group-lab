@@ -64,11 +64,11 @@ df_hr_total = pd.read_sql("""SELECT SUM(HR) AS total_home_runs FROM babe_ruth_st
 
 # STEP 11
 # Replace None with your code
-df_teams_years = pd.read_sql("""SELECT team_name, COUNT(DISTINCT year) AS number_years FROM babe_ruth_stats GROUP BY team;""", conn3).sum()
+df_teams_years = pd.read_sql("""SELECT team, COUNT(DISTINCT year) AS number_years FROM babe_ruth_stats GROUP BY team;""", conn3).sum()
 
 # STEP 12
 # Replace None with your code
-df_at_bats = pd.read_sql("""SELECT team AS team_name, AVG(at_bats) AS total_at_bats FROM babe_ruth_stats GROUP BY team HAVING AVG(at_bats) >200 """, conn3).sum()
+df_at_bats = pd.read_sql("""SELECT team, AVG(at_bats) AS total_at_bats FROM babe_ruth_stats GROUP BY team HAVING AVG(at_bats) >200 """, conn3).sum()
 
 
 conn1.close()
