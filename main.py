@@ -68,7 +68,7 @@ df_teams_years = pd.read_sql("""SELECT team, COUNT(DISTINCT year) AS number_year
 
 # STEP 12
 # Replace None with your code
-df_at_bats = pd.read_sql("""SELECT team, AVG(at_bats) AS average_at_bats FROM babe_ruth_stats GROUP BY team HAVING AVG(at_bats) > 200""", conn3).sum()
+df_at_bats = pd.read_sql("""SELECT team, AVG(at_bats) AS average_at_bats FROM babe_ruth_stats GROUP BY team HAVING AVG(at_bats) > 200""", conn3)
 
 
 conn1.close()
